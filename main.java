@@ -1,16 +1,19 @@
+package TinderConActividades;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class main {
-    static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         Scanner entrada = new Scanner(System.in);
+        String ruta;
 
         boolean existe = false;
         do {
             System.out.println("Nombre del fichero: ");
-            String ruta = entrada.nextLine() + ".txt";
+            ruta = entrada.nextLine() + ".txt";
             File file = new File(ruta);
 
             if (!file.exists()) {
@@ -18,7 +21,8 @@ public class main {
                 System.out.println("Fichero creado");
                 existe = true;
             } else {
-                System.out.println("Fichero ya exixstente, intentelo de nuevo.");
+                System.out.println("Fichero ya exixstente.");
+                existe = true;
             }
         } while (!existe);
 
@@ -33,7 +37,9 @@ public class main {
             opcion = entrada.nextInt();
 
             switch (opcion) {
-
+                case 1 -> new añadirUsuarios().annadirUsuarios(ruta);
+                case 2 -> mostrarUsuarios.mostrar(ruta);
+                case 3 -> generarConcordancia.generar(ruta);
             }
         } while (opcion != 4);
 
